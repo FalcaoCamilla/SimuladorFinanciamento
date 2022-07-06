@@ -4,6 +4,7 @@ body{
     background: linear-gradient(to right, #36d1dc, #5b86e5);
     color: white;
     font-family: 'Noto Sans', sans-serif;
+    text-align: center;
 }
 
 input:nth-child(-n + 8){
@@ -48,4 +49,14 @@ label{
     text-align: center;
     border: solid 3px grey;
     cursor: pointer;
+}
+
+table, th, td{
+    margin: 0 auto;
+    border: solid 1px grey;
+    color:#05848d;
+    background-color: aliceblue;
+    font-weight: bold;
+    border-collapse: collapse;
+    padding: 10px;
 }
