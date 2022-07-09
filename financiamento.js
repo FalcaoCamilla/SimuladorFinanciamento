@@ -1,6 +1,8 @@
-import {Parcela} from './parcela'
+import {Parcela} from "./parcela.js"
 
-class Financiamento{
+const corpoTabela = document.querySelector('#corpoTabela');
+
+export class Financiamento{
     #taxaJuros; //mensais
     #prazo; //meses
     #parcelas = [];
@@ -8,7 +10,7 @@ class Financiamento{
         this.#taxaJuros = taxaJuros;
         this.#prazo = prazo;
         //composiçao - financiamento possui ou tem parcelas
-        this.#parcelas.push(new Parcela(0,0,0,0, valor - entrada)) //a primeira parcela se preocupa apenas com o parametro saldo (saldo devedor, valor que a pessoa quer financiar - valor de entrada)
+        this.#parcelas.push(new Parcela(0,0,0,0,valor - entrada)) //a primeira parcela se preocupa apenas com o parametro saldo (saldo devedor, valor que a pessoa quer financiar - valor de entrada)
     }
 
     static calcJuros(valor, taxaJuros){
@@ -16,24 +18,28 @@ class Financiamento{
     }
 
     calcParcelasMensais(){
-        let saldo = this.#parcelas[this.#parcelas.length - 1].getSaldo();
+        let saldo = this.#parcelas[this.#parcelas.length-1].getSaldo();
         let prazo = this.#prazo - (this.#parcelas.length - 1);
-        let amortizacao = saldo/prazo;
+        let amortizacao = saldo / prazo;
         for (let i = 0; i < prazo; i++){
             const numero = this.#parcelas.length;
             const juros = Financiamento.calcJuros(saldo, this.#taxaJuros);
             const valor = juros + amortizacao;
             saldo -= amortizacao;
             if (saldo < 0){saldo = 0};
-            this.#parcelas.push(new Parcela(numero, valor, juros, amortizacao, saldo))
+            this.#parcelas.push(new Parcela(numero, valor, juros, amortizacao, saldo));
+            console.log('o')
         }
     }
 
     exibeParcelas(){
         const parcelas = this.#parcelas.slice(1);
+        console.log(parcelas)
         for(const parcela of parcelas){
+            console.log('momo1')
             const linha = corpoTabela.insertRow(-1);
             for (const dado of parcela.getDadosFormatados()){
+                console.log('momo')
                 const celula = linha.insertCell(-1);
                 celula.textContent = dado;
             }
