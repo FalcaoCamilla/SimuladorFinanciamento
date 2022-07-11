@@ -14,7 +14,7 @@ export class Financiamento{
     }
 
     static calcJuros(valor, taxaJuros){
-        return valor * (taxaJuros/100);
+        return valor * (taxaJuros / 100);
     }
 
     calcParcelasMensais(){
@@ -28,7 +28,6 @@ export class Financiamento{
             saldo -= amortizacao;
             if (saldo < 0){saldo = 0};
             this.#parcelas.push(new Parcela(numero, valor, juros, amortizacao, saldo));
-            console.log('o')
         }
     }
 
@@ -36,10 +35,8 @@ export class Financiamento{
         const parcelas = this.#parcelas.slice(1);
         console.log(parcelas)
         for(const parcela of parcelas){
-            console.log('momo1')
             const linha = corpoTabela.insertRow(-1);
             for (const dado of parcela.getDadosFormatados()){
-                console.log('momo')
                 const celula = linha.insertCell(-1);
                 celula.textContent = dado;
             }

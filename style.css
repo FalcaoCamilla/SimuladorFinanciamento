@@ -51,7 +51,7 @@ label{
     cursor: pointer;
 }
 
-table, th, td{
+table, th, tbody{
     margin: 0 auto;
     border: solid 1px grey;
     color:#05848d;
@@ -59,4 +59,12 @@ table, th, td{
     font-weight: bold;
     border-collapse: collapse;
     padding: 10px;
+}
+
+td{
+    padding: 8px;
+}
+
+tr:nth-child(odd){
+    background-color: rgba(187, 215, 248, 0.645);
 }

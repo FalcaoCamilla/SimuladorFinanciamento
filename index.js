@@ -18,10 +18,10 @@ comCarencia.addEventListener('change', function(){
 });
 
 botaoCalcular.addEventListener('click', function(){
-    const valor = parseFloat("textoValor".value);
-    const entrada = parseFloat("textoEntrada".value);
-    const taxaJuros = parseFloat("textoTaxaJuros".value);
-    const prazo = parseFloat("textoPrazo".value);
+    const valor = parseFloat(textoValor.value);
+    const entrada = parseFloat(textoEntrada.value);
+    const taxaJuros = parseFloat(textoTaxaJuros.value);
+    const prazo = parseFloat(textoPrazo.value);
     let simulacao;
     simulacao = new Financiamento(valor, entrada, taxaJuros, prazo);
     simulacao.calcParcelasMensais();
