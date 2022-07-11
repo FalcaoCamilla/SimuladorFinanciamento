@@ -9,7 +9,7 @@ export class Financiamento{
     constructor(valor, entrada, taxaJuros, prazo){
         this.#taxaJuros = taxaJuros;
         this.#prazo = prazo;
-        //composiçao - financiamento possui ou tem parcelas
+        //composição - financiamento possui ou tem parcelas
         this.#parcelas.push(new Parcela(0,0,0,0,valor - entrada)) //a primeira parcela se preocupa apenas com o parametro saldo (saldo devedor, valor que a pessoa quer financiar - valor de entrada)
     }
 
